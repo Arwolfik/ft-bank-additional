@@ -35,12 +35,6 @@
   }
 
   const tgId = getTgUserId();
-  if (tgId) {
-    whoami.textContent = `Пользователь определён: tg_id=${tgId}`;
-  } else {
-    whoami.textContent =
-      "Не удалось определить tg_id. Откройте миниапп внутри Telegram или добавьте ?tg_id=123 для теста.";
-  }
 
   try {
     tg?.ready();
