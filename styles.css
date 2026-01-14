@@ -301,3 +301,18 @@ button:active {
     font-size: 1rem;
   }
 }
+/* =========================
+   Section titles
+========================= */
+.section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 30px 0 6px;
+  color: var(--color-text);
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-muted);
+  margin: 0 0 20px;
+}
