@@ -2,7 +2,7 @@
   const tg = window.Telegram?.WebApp;
 
   // TODO: подставишь URL YC Function после деплоя
-  const BACKEND_URL = "https://<YOUR_YC_FUNCTION_URL>/submit";
+  const BACKEND_URL = "https://functions.yandexcloud.net/d4e6jlephfevuu8t4etf/submit";
 
   const form = document.getElementById("survey-form");
   const errorEl = document.getElementById("error");
