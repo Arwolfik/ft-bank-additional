@@ -4,11 +4,13 @@
   // TODO: подставишь URL YC Function после деплоя
   const BACKEND_URL = "https://functions.yandexcloud.net/d4e6jlephfevuu8t4etf";
 
+  const MAX_FILE_SIZE = 15 * 1024 * 1024; // 15 МБ
+
   const form = document.getElementById("survey-form");
   const errorEl = document.getElementById("error");
   const resultEl = document.getElementById("result");
-  const whoami = document.getElementById("whoami");
   const submitBtn = document.getElementById("submit-btn");
+  const resumeInput = document.getElementById("resume");
 
   function showError(msg) {
     errorEl.textContent = msg;
@@ -41,6 +43,19 @@
     tg?.expand();
   } catch (_) {}
 
+  // Проверка размера файла сразу при выборе
+  resumeInput?.addEventListener("change", () => {
+    clearError();
+
+    const file = resumeInput.files?.[0];
+    if (!file) return;
+
+    if (file.size > MAX_FILE_SIZE) {
+      showError("Размер файла резюме не должен превышать 15 МБ.");
+      resumeInput.value = "";
+    }
+  });
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     clearError();
@@ -51,9 +66,15 @@
       return;
     }
 
-    const resumeFile = document.getElementById("resume").files?.[0];
+    const resumeFile = resumeInput?.files?.[0];
     if (!resumeFile) {
       showError("Прикрепите резюме (файл обязателен).");
+      return;
+    }
+
+    // Дублируем проверку на submit (на случай обхода change)
+    if (resumeFile.size > MAX_FILE_SIZE) {
+      showError("Размер файла резюме не должен превышать 15 МБ.");
       return;
     }
 
@@ -91,7 +112,8 @@
       showResult(data?.message || "Готово!");
       try {
         tg?.HapticFeedback?.notificationOccurred("success");
-        setTimeout(() => tg?.close(), 900);
+        // ❗️ВАЖНО: миниапп больше НЕ закрываем автоматически
+        // setTimeout(() => tg?.close(), 900);
       } catch (_) {}
     } catch (err) {
       showError(err?.message || "Неизвестная ошибка при отправке.");
