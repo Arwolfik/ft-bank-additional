@@ -33,13 +33,13 @@
       <option>Другое</option>
     </select>
 
-<h3 class="section-title">
-  Оцените свой уровень владения навыками
-</h3>
-<p class="section-subtitle">
-  Выберите вариант, который наиболее точно описывает ваш уровень
-</p>
-    
+    <h3 class="section-title">
+      Оцените свой уровень владения навыками
+    </h3>
+    <p class="section-subtitle">
+      Выберите вариант, который наиболее точно описывает ваш уровень
+    </p>
+
     <label for="excel">Microsoft Excel</label>
     <select id="excel" name="excel" required>
       <option value="" selected disabled>Выберите…</option>
@@ -103,8 +103,19 @@
       <option>Не владею</option>
     </select>
 
-    <label for="resume">Прикрепи свое резюме (обязательное)</label>
-    <input id="resume" name="resume" type="file" accept=".pdf,.doc,.docx,.rtf,.txt,.jpg,.jpeg,.png" required />
+    <!-- РЕЗЮМЕ: звёздочка + лимит -->
+    <label for="resume" class="required">
+      Прикрепи своё резюме
+      <span class="required-star">*</span>
+      <span class="file-hint">(до 15 МБ)</span>
+    </label>
+    <input
+      id="resume"
+      name="resume"
+      type="file"
+      accept=".pdf,.doc,.docx,.rtf,.txt,.jpg,.jpeg,.png"
+      required
+    />
 
     <p class="error" id="error" style="display:none;"></p>
 
