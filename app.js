@@ -2,7 +2,7 @@
   const tg = window.Telegram?.WebApp;
   const vkBridge = window.vkBridge;
 
-  const BACKEND_URL = "https://functions.yandexcloud.net/d4e6jlephfevuu8t4etf";
+  const BACKEND_URL = "https://functions.yandexcloud.net/d4e540tfgstiogekv02p";
 
   const MAX_FILE_SIZE = 15 * 1024 * 1024; // 15 МБ
 
